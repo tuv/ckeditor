@@ -4,10 +4,6 @@ module Ckeditor
   class Engine < ::Rails::Engine
     isolate_namespace Ckeditor
 
-    initializer 'ckeditor.assets_precompile', group: :all do |app|
-      app.config.assets.precompile += Ckeditor.assets
-    end
-
     initializer 'ckeditor.helpers' do
       ActiveSupport.on_load(:action_controller) do
         ActionController::Base.send :include, Ckeditor::Helpers::Controllers
